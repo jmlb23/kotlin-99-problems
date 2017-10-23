@@ -2,11 +2,20 @@ import functions.*
 import org.junit.Assert
 import org.junit.Test
 
+object Hola{
+    operator fun component1(){}
+    operator fun component2(){}
+    operator fun component3(){}
+    operator fun component4(){}
+}
+
 class Tests{
+
     @Test
     fun listRecivedLastItemReturned(){
         val list = listOf(1,2,4,5)
         Assert.assertEquals(list.last(), last(list))
+        val (x,y,z,t) = Hola
     }
 
     @Test
@@ -123,8 +132,11 @@ class Tests{
 
     @Test
     fun compressListWith20Elements(){
+
         var list = listOf(1,1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,3,3,3,3)
         var expected = listOf(1,2,3)
         Assert.assertEquals(expected,compress(list))
     }
+
+
 }

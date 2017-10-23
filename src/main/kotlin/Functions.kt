@@ -17,10 +17,13 @@ fun <T> nth(n: Int, xs: List<T>): T? = if (xs.isEmpty() || n > xs.size) {
     else -> nth(n - 1, xs.drop(1))
 }
 
-fun <T> length(xs: List<T>): Int = when (xs) {
-    listOf<T>() -> 0
-    else -> 1 + length(xs.drop(1))
+tailrec fun <T> tail_length(xs:List<T>,n: Int): Int = when(xs){
+    emptyList<Nothing>() ->  n
+    else -> tail_length(xs.drop(1),n+1)
 }
+
+fun <T> length(xs: List<T>): Int = tail_length(xs,0)
+
 
 
 fun <T> reverse(xs: List<T>): List<T?> = when (xs) {
